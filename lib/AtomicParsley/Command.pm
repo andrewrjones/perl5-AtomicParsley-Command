@@ -4,7 +4,7 @@ use warnings;
 
 package AtomicParsley::Command;
 
-# ABSTRACT: interface to the Atomic Parsley command
+# ABSTRACT: Interface to the Atomic Parsley command
 
 use AtomicParsley::Command::Tags;
 use IPC::Cmd '0.72', ();
