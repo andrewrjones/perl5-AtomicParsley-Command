@@ -9,6 +9,7 @@ package AtomicParsley::Command;
 use AtomicParsley::Command::Tags;
 use IPC::Cmd '0.72', ();
 use File::Spec '3.33';
+use File::Copy;
 
 sub new {
     my $class = shift;
@@ -58,7 +59,15 @@ sub write_tags {
     $self->_run($cmd);
 
     # return the temp file
-    return $self->_get_temp_file( $directories, $file );
+    my $tempfile = $self->_get_temp_file( $directories, $file );
+    
+    if($replace){
+        # move
+        move($tempfile, $path);
+        return $path;
+    } else {
+        return $tempfile;
+    }
 }
 
 sub _run {
