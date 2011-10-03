@@ -3,7 +3,8 @@
 use strict;
 use warnings;
 
-use Test::More tests => 14;
+use Test::Fatal;
+use Test::More tests => 13;
 use FindBin qw($Bin);
 
 use AtomicParsley::Command::Tags;
@@ -82,14 +83,12 @@ ok( !$ap->{success} );
 like( $ap->{stdout_buf}[0],
     qr/AP error trying to fopen: No such file or directory/ );
 
-$ap = AtomicParsley::Command->new(
-    {
-        ap      => 'foo',
-        verbose => 1
-    }
+isnt(
+    exception {
+        $ap = AtomicParsley::Command->new( { ap => 'foo', } );
+    },
+    undef
 );
-ok( !$ap->{ap} );
-is( $ap->{verbose}, 1 );
 
 unlink $tempfile;
 ok( !-e $tempfile );

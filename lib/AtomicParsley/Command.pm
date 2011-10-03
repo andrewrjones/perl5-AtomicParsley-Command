@@ -18,7 +18,7 @@ sub new {
 
     # the path to AtomicParsley
     my $ap = $args->{'ap'} // 'AtomicParsley';
-    $self->{'ap'} = IPC::Cmd::can_run($ap) or die "Can not run $self->{'ap'}";
+    $self->{'ap'} = IPC::Cmd::can_run($ap) or die "Can not run $ap";
     $self->{'verbose'} = $args->{'verbose'} // 0;
 
     $self->{'success'}       = undef;
