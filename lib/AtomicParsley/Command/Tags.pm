@@ -59,6 +59,71 @@ sub prepare {
 
   my $tags = AtomicParsley::Command::Tags->new(%tags);
 
+=attr artist
+
+=attr title
+
+=attr album
+  
+=attr genre
+  
+=attr tracknum
+  
+=attr disk
+  
+=attr comment
+  
+=attr year
+  
+=attr lyrics
+  
+=attr composer
+  
+=attr copyright
+  
+=attr grouping
+  
+=attr artwork
+  
+=attr bpm
+  
+=attr albumArtist
+  
+=attr compilation
+  
+=attr advisory
+  
+=attr stik
+  
+=attr description
+  
+=attr TVNetwork
+  
+=attr TVShowName
+  
+=attr TVEpisode
+  
+=attr TVSeasonNum
+  
+=attr TVEpisodeNum
+  
+=attr podcastFlag
+  
+=attr category
+  
+=attr keyword
+  
+=attr podcastURL
+  
+=attr podcastGUID
+  
+=attr purchaseDate
+  
+=attr encodingTool
+  
+=attr gapless
+
+
 =method prepare
 
 Prepares the tags into an array suitable for passing to AtomicParsley via L<IPC::Cmd>.

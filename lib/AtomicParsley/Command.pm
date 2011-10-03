@@ -18,7 +18,7 @@ sub new {
 
     # the path to AtomicParsley
     my $ap = $args->{'ap'} // 'AtomicParsley';
-    $self->{'ap'} = IPC::Cmd::can_run($ap);         # TODO: return?
+    $self->{'ap'} = IPC::Cmd::can_run($ap) or die "Can not run $self->{'ap'}";
     $self->{'verbose'} = $args->{'verbose'} // 0;
 
     $self->{'success'}       = undef;
@@ -60,16 +60,19 @@ sub write_tags {
 
     # return the temp file
     my $tempfile = $self->_get_temp_file( $directories, $file );
-    
-    if($replace){
+
+    if ($replace) {
+
         # move
-        move($tempfile, $path);
+        move( $tempfile, $path );
         return $path;
-    } else {
+    }
+    else {
         return $tempfile;
     }
 }
 
+# Run the command
 sub _run {
     my ( $self, $cmd ) = @_;
 
@@ -83,10 +86,11 @@ sub _run {
     $self->{'stderr_buf'}    = $stderr_buf;
 }
 
+# Parse the tags from AtomicParsley's output.
+# Returns a new AtomicParsley::Command::Tags object
 sub _parse_tags {
     my ( $self, $output ) = @_;
 
-    # split string and return new AtomicParsley::Command::Tags object
     my %tags;
     for my $line ( split( /\n/, $output ) ) {
         if ( $line =~ /^Atom \"(.+)\" contains: (.*)$/ ) {
@@ -177,6 +181,9 @@ sub _parse_tags {
     return AtomicParsley::Command::Tags->new(%tags);
 }
 
+# Try our best to get the name of the temp file.
+# Unfortunately. the temp file contains a random number,
+# so this is a best guess.
 sub _get_temp_file {
     my ( $self, $directories, $file ) = @_;
 
@@ -194,6 +201,7 @@ sub _get_temp_file {
     }
 }
 
+# Get the advisory value of an mp4 file, if present.
 sub _get_advisory_value {
     my $advisory = shift;
 
@@ -209,20 +217,39 @@ sub _get_advisory_value {
 
 =head1 SYNOPSIS
 
-  ...
+  my $ap = AtomicParsley::Command->new({
+    ap => '/path/to/AtomicParsley',
+    verbose => 1,
+  });
+  
+  # read tags from a file
+  my $tags = $ap->read_tags( '/path/to/mp4' );
+  
+  # write tags to a file
+  my $path = $ap->write_tags( '/path/to/mp4', $tags, 1 );
 
-=method method_x
+=method read_tags( $path )
 
-This method does something experimental.
+Read the meta tags from a file and returns a L<AtomicParsley::Command::Tags> object.
 
-=method method_y
+=method write_tags( $path, $tags, $replace )
 
-This method returns a reason.
+Writes the tags to a mp4 file.
+
+$tags is a L<AtomicParsley::Command::Tags> object.
+
+If $replace is true, the existing file will be replaced with the new, tagged file. Otherwise, the tagged file will be a temp file, with the existing file untouched.
+
+Returns the path on success.
+
+=head1 BUGS
+
+=for :list
+* Doesn't load all the "advisory" values for an mp4 file.
 
 =head1 SEE ALSO
 
 =for :list
-* L<Your::Module>
-* L<Your::Package>
+* L<App::MP4Meta>
 
 =cut
