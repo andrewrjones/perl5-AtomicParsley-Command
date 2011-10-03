@@ -218,7 +218,7 @@ sub _get_advisory_value {
 =head1 SYNOPSIS
 
   my $ap = AtomicParsley::Command->new({
-    ap => '/path/to/AtomicParsley',
+    ap => '/path/to/AtomicParsley', # will die if not found
     verbose => 1,
   });
   
@@ -246,6 +246,14 @@ Returns the path on success.
 
 =for :list
 * Doesn't load all the "advisory" values for an mp4 file.
+* The following tags have not been implemented:
+  * artwork
+  * compilation
+  * podcastFlag
+  * podcastURL
+  * podcastGUID
+  * purchaseDate
+  * gapless
 
 =head1 SEE ALSO
 
