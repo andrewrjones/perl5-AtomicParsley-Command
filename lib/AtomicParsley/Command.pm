@@ -228,6 +228,20 @@ sub _get_advisory_value {
   # write tags to a file
   my $path = $ap->write_tags( '/path/to/mp4', $tags, 1 );
 
+=head1 DESCRIPTION
+
+This is an interface to the AtomicParsley command.
+
+AtomicParsley is a lightweight command line program for reading, parsing and setting metadata into MPEG-4 files. For more information see http://atomicparsley.sourceforge.net/.
+
+=method new ( %args )
+
+Creates a new AtomicParsley::Command object. Takes the following arguments:
+
+=for :list
+* ap - the path to the AtomicParsley command. Defaults to 'AtomicParsley' (assumes its on your PATH).
+* verbose - runs verbosely. (TODO)
+
 =method read_tags( $path )
 
 Read the meta tags from a file and returns a L<AtomicParsley::Command::Tags> object.
@@ -242,9 +256,10 @@ If $replace is true, the existing file will be replaced with the new, tagged fil
 
 Returns the path on success.
 
-=head1 BUGS
+=head1 ISSUES
 
 =for :list
+* Doesn't run verbosely.
 * Doesn't load all the "advisory" values for an mp4 file.
 * The following tags have not been implemented:
   * artwork
