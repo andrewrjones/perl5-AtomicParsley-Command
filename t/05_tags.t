@@ -14,6 +14,9 @@ my $tags = new_ok(
     [
         artist => 'foo',
         title  => 'bar',
+        album  => '',
+        genre  => {},
+        disk   => []
     ]
 );
 

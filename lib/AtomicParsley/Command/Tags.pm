@@ -5,6 +5,8 @@ package AtomicParsley::Command::Tags;
 
 # ABSTRACT: represent the mp4 metatags
 
+use String::Util 'hascontent';
+
 use Object::Tiny qw{
   artist
   title
@@ -46,7 +48,11 @@ sub prepare {
     # loop through all accessors and generate parameters for AP
     my @out;
     while ( my ( $key, $value ) = each(%$self) ) {
-        next unless defined $value;
+        next
+          unless defined $value
+              && ref($value) ne 'HASH'
+              && ref($value) ne 'ARRAY'
+              && hascontent($value);
 
         push @out, "--$key";
         push @out, $value;
