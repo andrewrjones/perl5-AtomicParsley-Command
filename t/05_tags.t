@@ -12,11 +12,12 @@ require_ok('AtomicParsley::Command::Tags');
 my $tags = new_ok(
     'AtomicParsley::Command::Tags',
     [
-        artist => 'foo',
-        title  => 'bar',
-        album  => '',
-        genre  => {},
-        disk   => []
+        artist  => 'foo',
+        title   => 'bar',
+        album   => '',
+        genre   => {},
+        disk    => [],
+        comment => (),
     ]
 );
 

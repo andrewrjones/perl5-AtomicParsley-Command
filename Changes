@@ -1,4 +1,5 @@
 {{$NEXT}}
+    Better way to ensure we are only giving AtomicParsley strings
 
 1.120560  2012-02-25 18:54:28 Europe/London
     Be more careful about what we pass to AtomicParsley
