@@ -7,7 +7,7 @@ package AtomicParsley::Command;
 # ABSTRACT: Interface to the Atomic Parsley command
 
 use AtomicParsley::Command::Tags;
-use IPC::Cmd '0.72', ();
+use IPC::Cmd '0.76', ();
 use File::Spec '3.33';
 use File::Copy;
 
@@ -75,6 +75,8 @@ sub write_tags {
 # Run the command
 sub _run {
     my ( $self, $cmd ) = @_;
+
+    local $IPC::Cmd::ALLOW_NULL_ARGS = 1;
 
     my ( $success, $error_message, $full_buf, $stdout_buf, $stderr_buf ) =
       IPC::Cmd::run( command => $cmd, verbose => $self->{'verbose'} );
