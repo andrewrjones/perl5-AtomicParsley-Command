@@ -112,6 +112,9 @@ sub _parse_tags {
                 when (/cmt$/) {
                     $tags{'comment'} = $value;
                 }
+                when ('cpil') {
+                    $tags{'compilation'} = $value;
+                }
                 when ('cprt') {
                     $tags{'copyright'} = $value;
                 }
