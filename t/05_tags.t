@@ -15,11 +15,12 @@ my $tags = new_ok(
         artist  => 'foo',
         title   => 'bar',
         album   => '',
-        genre   => {},
-        disk    => [],
-        comment => (),
+#        genre   => {},
+#        disk    => [],
+#        comment => (),
+        comment => undef,
     ]
 );
 
 my @p = $tags->prepare;
-cmp_bag( \@p, [ '--artist', 'foo', '--title', 'bar' ] );
+cmp_bag( \@p, [ '--artist', 'foo', '--title', 'bar', '--album', '' ] );
