@@ -5,8 +5,6 @@ package AtomicParsley::Command::Tags;
 
 # ABSTRACT: represent the mp4 metatags
 
-use Params::Util qw{_STRING};
-
 use Object::Tiny qw{
   artist
   title
@@ -48,7 +46,7 @@ sub prepare {
     # loop through all accessors and generate parameters for AP
     my @out;
     while ( my ( $key, $value ) = each(%$self) ) {
-        next unless _STRING($value);
+        next unless( defined $value );
 
         push @out, "--$key";
         push @out, $value;
