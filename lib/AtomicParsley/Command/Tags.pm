@@ -46,7 +46,7 @@ sub prepare {
     # loop through all accessors and generate parameters for AP
     my @out;
     while ( my ( $key, $value ) = each(%$self) ) {
-        next unless( defined $value );
+        next unless ( defined $value );
 
         push @out, "--$key";
         push @out, $value;

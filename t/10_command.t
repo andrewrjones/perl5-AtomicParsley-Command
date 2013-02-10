@@ -80,18 +80,17 @@ is_deeply( $read_tags, $write_tags, 'read/write tags' );
 
 # remove tags
 $write_tags = AtomicParsley::Command::Tags->new(
-    title   => '',
-    genre   => undef,
+    title => '',
+    genre => undef,
 );
 my $tempfile2 = $ap->write_tags( $testfile, $write_tags );
 $read_tags = $ap->read_tags($tempfile2);
-is( $read_tags->title, undef, 'removed' );
+is( $read_tags->title, undef,    'removed' );
 is( $read_tags->genre, 'Comedy', 'kept' );
 
 $ap->read_tags('/does/not/exist');
 ok( !$ap->{success} );
-like( $ap->{stdout_buf}[0],
-    qr/No such file or directory/ );
+like( $ap->{stdout_buf}[0], qr/No such file or directory/ );
 
 isnt(
     exception {
