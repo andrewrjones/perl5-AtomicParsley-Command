@@ -279,6 +279,10 @@ Returns the path on success.
   * purchaseDate
   * gapless
 
+=head1 UPDATING
+
+If you are updating, ensure you use the latest version of AtomicParsley from https://bitbucket.org/wez/atomicparsley.
+
 =head1 SEE ALSO
 
 =for :list
