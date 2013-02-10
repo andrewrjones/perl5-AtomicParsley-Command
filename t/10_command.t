@@ -4,8 +4,9 @@ use strict;
 use warnings;
 
 use Test::Fatal;
-use Test::More tests => 16;
+use Test::More tests => 17;
 use FindBin qw($Bin);
+use File::Copy;
 
 use AtomicParsley::Command::Tags;
 
@@ -79,12 +80,15 @@ ok( -e $tempfile );
 my $read_tags = $ap->read_tags($tempfile);
 is_deeply( $read_tags, $write_tags, 'read/write tags' );
 
-# remove tags
+# remove tags, and test replace
+my $testfile2 = "$Bin/resources/Family-replace.mp4";
+copy( $testfile, $testfile2 );
 $write_tags = AtomicParsley::Command::Tags->new(
     title => '',
     genre => undef,
 );
-my $tempfile2 = $ap->write_tags( $testfile, $write_tags );
+my $tempfile2 = $ap->write_tags( $testfile2, $write_tags, 1 );
+is( $tempfile2, $testfile2 );
 $read_tags = $ap->read_tags($tempfile2);
 is( $read_tags->title, undef,    'removed' );
 is( $read_tags->genre, 'Comedy', 'kept' );
