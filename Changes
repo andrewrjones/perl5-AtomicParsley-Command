@@ -1,4 +1,5 @@
 {{$NEXT}}
+    #2: Ability to remove tags (thanks hiroaki)
 
 1.120620  2012-03-02 07:12:06 Europe/London
     Better way to ensure we are only giving AtomicParsley strings
