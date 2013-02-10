@@ -54,6 +54,7 @@ my $write_tags = AtomicParsley::Command::Tags->new(
     advisory     => 'clean',
     stik         => 'Movie',
     description  => 'test_description',
+    longdesc     => 'test_longdesc',
     TVNetwork    => 'test_TVNetwork',
     TVShowName   => 'test_TVShowName',
     TVEpisode    => 'test_TVEpisode',

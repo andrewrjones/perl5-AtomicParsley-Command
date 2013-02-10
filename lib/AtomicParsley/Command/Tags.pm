@@ -25,6 +25,7 @@ use Object::Tiny qw{
   advisory
   stik
   description
+  longdesc
   TVNetwork
   TVShowName
   TVEpisode
@@ -98,6 +99,8 @@ sub prepare {
 =attr stik
   
 =attr description
+
+=attr longdesc
   
 =attr TVNetwork
   

@@ -126,6 +126,9 @@ sub _parse_tags {
                 when ('desc') {
                     $tags{'description'} = $value;
                 }
+                when ('ldes') {
+                    $tags{'longdesc'} = $value;
+                }
                 when ('disk') {
                     $value =~ s/ of /\//;
                     $tags{'disk'} = $value;
