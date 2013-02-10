@@ -34,6 +34,7 @@ sub new {
 sub read_tags {
     my ( $self, $path ) = @_;
 
+    $path = File::Spec->rel2abs($path);
     my ( $volume, $directories, $file ) = File::Spec->splitpath($path);
 
     my $cmd = [ $self->{ap}, $path, '-t' ];
