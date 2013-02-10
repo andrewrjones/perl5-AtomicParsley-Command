@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use Test::Fatal;
-use Test::More tests => 17;
+use Test::More tests => 18;
 use FindBin qw($Bin);
 use File::Copy;
 
@@ -27,10 +27,17 @@ Atom "©ART" contains: Milton Jones
 Atom "aART" contains: Milton Jones
 Atom "gnre" contains: Comedy
 Atom "tvsh" contains: Milton Jones
+Atom "desc" contains: foo bar
+
+baz
 ';
 $tags = $ap->_parse_tags($output);
 is( $tags->{title}, 'Family (Mock the Week)', 'title' );
 is( $tags->{genre}, 'Comedy', 'genre' );
+my $desc = 'foo bar
+
+baz';
+is( $tags->{description}, $desc, 'description' );
 
 # write_tags
 my $write_tags = AtomicParsley::Command::Tags->new(
