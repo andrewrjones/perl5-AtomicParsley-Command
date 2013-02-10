@@ -81,7 +81,7 @@ is_deeply( $read_tags, $write_tags, 'read/write tags' );
 $ap->read_tags('/does/not/exist');
 ok( !$ap->{success} );
 like( $ap->{stdout_buf}[0],
-    qr/AP error trying to fopen: No such file or directory/ );
+    qr/No such file or directory/ );
 
 isnt(
     exception {

@@ -232,7 +232,7 @@ sub _get_advisory_value {
 
 This is an interface to the AtomicParsley command.
 
-AtomicParsley is a lightweight command line program for reading, parsing and setting metadata into MPEG-4 files. For more information see http://atomicparsley.sourceforge.net/.
+AtomicParsley is a lightweight command line program for reading, parsing and setting metadata into MPEG-4 files. For more information see https://bitbucket.org/wez/atomicparsley.
 
 =method new ( %args )
 
