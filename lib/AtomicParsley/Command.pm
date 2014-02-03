@@ -10,6 +10,7 @@ use AtomicParsley::Command::Tags;
 use IPC::Cmd '0.76', ();
 use File::Spec '3.33';
 use File::Copy;
+use File::Glob qw{ bsd_glob };
 
 sub new {
     my $class = shift;
@@ -214,7 +215,7 @@ sub _get_temp_file {
     my $suffix = $1;
 
     # search directory
-    for my $tempfile ( glob("$directories*$suffix") ) {
+    for my $tempfile ( bsd_glob("$directories*$suffix") ) {
 
         # return the first match
         if ( $tempfile =~ /^$directories$file.*$suffix$/ ) {
