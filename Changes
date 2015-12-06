@@ -1,4 +1,6 @@
 {{$NEXT}}
+    #6: Fix failing tests when AtomicParsley isn't installed
+    #5: Use `bsd_glob` for temp file finding (thanks jimgraham)
 
 1.130420  2013-02-11 00:08:59 Europe/London
     #4: Fix reading tags that span multiple lines.
