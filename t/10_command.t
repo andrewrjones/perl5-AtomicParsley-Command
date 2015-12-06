@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use Test::Fatal;
-use Test::More tests => 18;
+use Test::More tests => 23;
 use FindBin qw($Bin);
 use File::Copy;
 
@@ -87,6 +87,18 @@ ok( -e $tempfile );
 my $read_tags = $ap->read_tags($tempfile);
 is_deeply( $read_tags, $write_tags, 'read/write tags' );
 
+#-- test with spaces for file glob
+mkdir "$Bin/space in resources";
+my $testfile3 = "$Bin/space in resources/Family with spaces.mp4";
+copy( $testfile, $testfile3 );
+
+my $return_file = $ap->write_tags( $testfile3, $write_tags, 1 );
+ok( -e $return_file );
+ok ( $return_file eq $testfile3);
+$read_tags = $ap->read_tags($return_file);
+is ($read_tags->title, $write_tags->title, "returned file has tags" );
+
+
 # remove tags, and test replace
 my $testfile2 = "$Bin/resources/Family-replace.mp4";
 copy( $testfile, $testfile2 );
@@ -99,6 +111,7 @@ is( $tempfile2, $testfile2 );
 $read_tags = $ap->read_tags($tempfile2);
 is( $read_tags->title, undef,    'removed' );
 is( $read_tags->genre, 'Comedy', 'kept' );
+
 
 $ap->read_tags('/does/not/exist');
 ok( !$ap->{success} );
@@ -115,3 +128,7 @@ unlink $tempfile;
 ok( !-e $tempfile );
 unlink $tempfile2;
 ok( !-e $tempfile2 );
+unlink $testfile3;
+ok( !-e $tempfile2 );
+rmdir "$Bin/space in resources";
+ok( !-d "$Bin/space in resources");
