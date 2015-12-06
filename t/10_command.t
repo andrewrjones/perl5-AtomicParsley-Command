@@ -4,13 +4,19 @@ use strict;
 use warnings;
 
 use Test::Fatal;
-use Test::More tests => 23;
+use Test::More;
 use FindBin qw($Bin);
 use File::Copy;
+use IPC::Cmd '0.76', ();
 
 use AtomicParsley::Command::Tags;
 
-BEGIN { use_ok('AtomicParsley::Command'); }
+if( IPC::Cmd::can_run('AtomicParsley') ){
+    plan tests => 22;
+} else {
+    plan skip_all => 'AtomicParsley not present';
+}
+
 require_ok('AtomicParsley::Command');
 
 my $ap;

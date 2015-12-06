@@ -4,9 +4,8 @@ use strict;
 use warnings;
 
 use Test::Deep;
-use Test::More tests => 4;
+use Test::More tests => 3;
 
-BEGIN { use_ok('AtomicParsley::Command::Tags'); }
 require_ok('AtomicParsley::Command::Tags');
 
 my $tags = new_ok(
