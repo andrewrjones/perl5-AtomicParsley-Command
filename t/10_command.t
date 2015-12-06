@@ -28,8 +28,8 @@ like( $ap->{ap}, qr/AtomicParsley$/ );
 is( $ap->{verbose}, 0 );
 
 # _parse_tags
-my $output = 'Atom "©nam" contains: Family (Mock the Week)
-Atom "©ART" contains: Milton Jones
+my $output = 'Atom "Â©nam" contains: Family (Mock the Week)
+Atom "Â©ART" contains: Milton Jones
 Atom "aART" contains: Milton Jones
 Atom "gnre" contains: Comedy
 Atom "tvsh" contains: Milton Jones
