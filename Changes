@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+1.153400  2015-12-06 21:45:14GMT+0000 Europe/London
     #6: Fix failing tests when AtomicParsley isn't installed
     #5: Use `bsd_glob` for temp file finding (thanks jimgraham)
 
