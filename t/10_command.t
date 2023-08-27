@@ -7,7 +7,7 @@ use Test::Fatal;
 use Test::More;
 use FindBin qw($Bin);
 use File::Copy;
-use IPC::Cmd '0.76', ();
+use IPC::Cmd 0.76 ();
 
 use AtomicParsley::Command::Tags;
 
