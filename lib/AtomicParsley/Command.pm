@@ -7,8 +7,8 @@ package AtomicParsley::Command;
 # ABSTRACT: Interface to the Atomic Parsley command
 
 use AtomicParsley::Command::Tags;
-use IPC::Cmd '0.76', ();
-use File::Spec '3.33';
+use IPC::Cmd 0.76 ();
+use File::Spec 3.33;
 use File::Copy;
 use File::Glob qw{ bsd_glob };
 
